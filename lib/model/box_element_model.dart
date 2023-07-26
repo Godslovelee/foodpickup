@@ -33,7 +33,10 @@ class CartModel extends ChangeNotifier {
 
   // add item to cart
   void addItemToCart(int index) {
-    _cartItems.add(_shopItems[index]);
+    ///Fix issue with accessing private variables...(use getters)
+    List cartItems = this.cartItems;
+    List shopItems = this.shopItems;
+    cartItems.add(shopItems[index]);
     notifyListeners();
   }
 
