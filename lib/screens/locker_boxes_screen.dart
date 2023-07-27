@@ -4,6 +4,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 
+import '../model/enums/pickup_boxes_enum.dart';
 import '../widgets/count_down_widget.dart';
 
 class LockerBoxes extends StatefulWidget {
@@ -22,6 +23,8 @@ class LockerBoxes extends StatefulWidget {
 
 class _LockerBoxesState extends State<LockerBoxes> {
   //Flag to display/un-display the order ID when the timer starts
+  late final HereIsYourPickUp hereIsYourPickUp = HereIsYourPickUp.displayPickUpAvailable;
+
   bool _showOrderId = true;
   bool _showPickUpBoxText = true;
   bool _showOrderImage = true;
@@ -40,6 +43,17 @@ class _LockerBoxesState extends State<LockerBoxes> {
         _showOrderImage = false;
       });
     });
+  }
+
+  String _showHereIsPickUp(){
+    switch(hereIsYourPickUp){
+
+      case HereIsYourPickUp.displayPickUpAvailable:
+        return 'Here is your Available PickUp Box';
+      case HereIsYourPickUp.displayPickUpNotAvailable:
+        return 'Please Select New Order';
+    }
+
   }
 
   @override
@@ -63,7 +77,7 @@ class _LockerBoxesState extends State<LockerBoxes> {
                 padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                 child: Text(
                   _showPickUpBoxText
-                      ? "Here is your Available Pickup Box"
+                      ? _showHereIsPickUp()
                       : "Please Select a New Order",
                   style: const TextStyle(
                     fontSize: 24,
