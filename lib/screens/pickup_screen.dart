@@ -2,13 +2,18 @@
 ///Lasted Edited by Godslove 25.07.2023
 
 import 'package:flutter/material.dart';
+import 'package:food_pickup_app/model/enums/pickup_boxes_enum.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import '../model/box_element_model.dart';
 import 'locker_boxes_screen.dart';
 
 class CartPage extends StatelessWidget {
-  const CartPage({super.key});
+  const CartPage({super.key, required this.pickUpCondition});
+
+   final PickUpCondition pickUpCondition;
+
+   ///Different ways we can use Enums, we can call it directly or we can make it be required in a classs
 
   // Function to handle navigation to LockerBoxes screen
   void onProceed(BuildContext context) async {
@@ -53,6 +58,17 @@ class CartPage extends StatelessWidget {
     }
   }
 
+  String _displayPickupText(){
+    switch (pickUpCondition){
+
+      case PickUpCondition.available:
+        return 'your order is here';
+
+      case PickUpCondition.notAvailable:
+        return 'select new order';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -72,7 +88,7 @@ class CartPage extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 24.0),
                 child: Text(
-                  "My Cart",
+                  "My Cart : ${_displayPickupText()}" ,
                   style: GoogleFonts.notoSerif(
                     fontSize: 36,
                     fontWeight: FontWeight.bold,
