@@ -1,0 +1,1 @@
+final baseUrl = Uri.parse('http://google.com');
