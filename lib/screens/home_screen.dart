@@ -3,6 +3,7 @@
 ///Description: Home Screen Page, this displays the list of available orders
 
 import 'package:flutter/material.dart';
+import 'package:food_pickup_app/model/enums/pickup_boxes_enum.dart';
 import 'package:food_pickup_app/screens/pickup_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -62,7 +63,7 @@ class _HomePageState extends State<HomePage> {
           context,
           MaterialPageRoute(
             builder: (context) {
-              return CartPage();
+              return const CartPage(pickUpCondition: PickUpCondition.available,);
             },
           ),
         ),
