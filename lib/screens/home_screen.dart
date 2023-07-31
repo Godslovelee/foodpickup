@@ -12,6 +12,8 @@ import '../model/box_element_model.dart';
 import '../widgets/box_items_tiles.dart';
 
 class HomePage extends StatefulWidget {
+  static const String route = '/homepage/HomePageScreen';
+
   const HomePage({super.key});
 
   @override
@@ -63,7 +65,7 @@ class _HomePageState extends State<HomePage> {
           context,
           MaterialPageRoute(
             builder: (context) {
-              return const CartPage(pickUpCondition: PickUpCondition.available,);
+              return CartPage(pickUpCondition: PickUpCondition.available,);
             },
           ),
         ),
